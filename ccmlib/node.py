@@ -865,6 +865,8 @@ class Node(object):
         host = self.network_interfaces['thrift'][0]
         if self.get_base_cassandra_version() >= 2.1:
             port = self.network_interfaces['binary'][1]
+            print('######################')
+            print(self.network_interfaces)
         else:
             port = self.network_interfaces['thrift'][1]
         args = cqlsh_options + [host, str(port)]
