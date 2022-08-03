@@ -127,6 +127,9 @@ def get_cluster_info(cluster, port=9142):
     node1 = cluster.nodelist()[0]
     stdout, stderr = node1.run_cqlsh(cmds='select JSON host_id,broadcast_address from system.local ;',
                                      return_output=True)
+    print(stdout)
+    print('#######')
+    print(stderr)
 
     nodes_info = []
     for line in stdout.splitlines()[3:-2]:
@@ -135,6 +138,10 @@ def get_cluster_info(cluster, port=9142):
 
     stdout, stderr = node1.run_cqlsh(cmds='select JSON peer,host_id from system.peers ;',
                                      return_output=True)
+    print(stdout)
+    print('#######')
+    print(stderr)
+
 
     for line in stdout.splitlines()[3:-2]:
         host = json.loads(line)
